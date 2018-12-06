@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 print("Lendo o documento...")
 
 #Metodo original de leitura
-with open("../chicago.csv", "r") as file_read:
+with open("chicago.csv", "r") as file_read:
     reader = csv.reader(file_read)
     data_list = list(reader)
 
@@ -85,6 +85,13 @@ input("Aperte Enter para continuar...")
 male = 0
 female = 0
 
+for gender in column_to_list(data_list,-2):
+    if gender == 'Male':
+        male+=1
+    elif gender == 'Female':
+        female+=1
+    
+
 
 # Verificando o resultado
 print("\nTAREFA 4: Imprimindo quantos masculinos e femininos nós encontramos")
@@ -102,7 +109,15 @@ input("Aperte Enter para continuar...")
 def count_gender(data_list):
     male = 0
     female = 0
-    return [male, female]
+
+    for gender in column_to_list(data_list,-2):
+        if gender == 'Male':
+            male+=1
+        elif gender == 'Female':
+            female+=1
+
+    return [male,female]
+    
 
 
 print("\nTAREFA 5: Imprimindo o resultado de count_gender")
@@ -121,6 +136,15 @@ input("Aperte Enter para continuar...")
 # Esperamos ver "Male", "Female", ou "Equal" como resposta.
 def most_popular_gender(data_list):
     answer = ""
+    number_of_genders = count_gender(data_list)
+    
+    if number_of_genders[0] > number_of_genders[1]:
+        answer="Male"
+    elif number_of_genders[1] > number_of_genders[0]:
+        answer="Female"
+    else:
+        answer="Equal"
+    
     return answer
 
 
