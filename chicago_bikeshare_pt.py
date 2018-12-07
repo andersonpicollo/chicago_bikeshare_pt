@@ -184,7 +184,6 @@ def count_user_types (data_list):
 
     return [subscriber,customer]
 
-
 users_type_list=column_to_list(data_list,-3)
 types=["Subscriber","Customer"]
 quantity=count_user_types(data_list)
@@ -202,7 +201,7 @@ input("Aperte Enter para continuar...")
 male, female = count_gender(data_list)
 print("\nTAREFA 8: Por que a condição a seguir é Falsa?")
 print("male + female == len(data_list):", male + female == len(data_list))
-answer = "Escreva sua resposta aqui."
+answer = "Algumas amostras da lista possuem gender vazio."
 print("resposta:", answer)
 
 # ------------ NÃO MUDE NENHUM CÓDIGO AQUI ------------
@@ -214,12 +213,33 @@ input("Aperte Enter para continuar...")
 # TAREFA 9
 # TODO: Ache a duração de viagem Mínima, Máxima, Média, e Mediana.
 # Você não deve usar funções prontas para isso, como max() e min().
-trip_duration_list = column_to_list(data_list, 2)
-min_trip = 0.
-max_trip = 0.
+trip_duration_list = [int (i) for i in column_to_list(data_list, 2)]
+min_trip = trip_duration_list[0]
+max_trip = trip_duration_list[0]
 mean_trip = 0.
 median_trip = 0.
+accumulator=0
 
+for duration in trip_duration_list:
+    accumulator+=int(duration)
+    if int(min_trip) > int(duration):
+        min_trip=int(duration)
+    if int(max_trip) < int(duration):
+        max_trip=int(duration)
+
+mean_trip=accumulator/len(trip_duration_list)
+
+def median(lst):
+    n=len(lst)
+    if n<1:
+        return None
+    if n % 2 == 1:
+        return sorted(lst)[n//2]
+    else:
+        return sum(sorted(lst)[n//2-1:n//2+1])/2.0
+    
+
+median_trip = float(median(trip_duration_list))
 
 print("\nTAREFA 9: Imprimindo o mínimo, máximo, média, e mediana")
 print("Min: ", min_trip, "Max: ", max_trip, "Média: ", mean_trip, "Mediana: ", median_trip)
@@ -235,7 +255,7 @@ input("Aperte Enter para continuar...")
 # TAREFA 10
 # Gênero é fácil porque nós temos apenas algumas opções. E quanto a start_stations? Quantas opções ele tem?
 # TODO: Verifique quantos tipos de start_stations nós temos, usando set()
-start_stations = set()
+start_stations = set(column_to_list(data_list,3))
 
 print("\nTAREFA 10: Imprimindo as start stations:")
 print(len(start_stations))
