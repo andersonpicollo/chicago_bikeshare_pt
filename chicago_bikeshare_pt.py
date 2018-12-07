@@ -60,6 +60,16 @@ input("Aperte Enter para continuar...")
 # TAREFA 3
 # TODO: Crie uma função para adicionar as colunas(features) de uma lista em outra lista, na mesma ordem
 def column_to_list(data, index):
+    """
+      Função que recupera uma coluna de uma lista.
+      Argumentos:
+          param1: lista alvo
+          param2: indice da coluna a ser recuperada
+      Retorna:
+          Uma lista lista com os valores da coluna.
+
+    """
+
     column_list = []
     # Dica: Você pode usar um for para iterar sobre as amostras, pegar a feature pelo seu índice, e dar append para uma lista
     for i in data:
@@ -107,6 +117,16 @@ input("Aperte Enter para continuar...")
 # TODO: Crie uma função para contar os gêneros. Retorne uma lista.
 # Isso deveria retornar uma lista com [count_male, count_female] (exemplo: [10, 15] significa 10 Masculinos, 15 Femininos)
 def count_gender(data_list):
+    """
+      Função que conta os generos masculino e feminino da uma lista.
+      Argumentos:
+          param1: A lista a ser conferida.
+      Retorna:
+            Uma lista sendo a primeira posição 
+            a quantidade de generos masculino 
+            e a segunda feminina.
+    """
+
     male = 0
     female = 0
 
@@ -135,6 +155,16 @@ input("Aperte Enter para continuar...")
 # TODO: Crie uma função que pegue o gênero mais popular, e retorne este gênero como uma string.
 # Esperamos ver "Male", "Female", ou "Equal" como resposta.
 def most_popular_gender(data_list):
+
+    """
+      Funcao que retorna o genero mais famoso entre
+      masculino e feminino.
+      Argumentos:
+          param1: A lista a ser conferida.
+      Retorna:
+            Uma string identificando o genero.
+    """
+    
     answer = ""
     number_of_genders = count_gender(data_list)
     
@@ -173,6 +203,17 @@ input("Aperte Enter para continuar...")
 # TODO: Crie um gráfico similar para user_types. Tenha certeza que a legenda está correta.
 print("\nTAREFA 7: Verifique o gráfico!")
 def count_user_types (data_list):
+
+    """
+      Função que conta quantos subscriber e curtomer existem
+      dentro da lista
+      Argumentos:
+          param1: A lista a ser conferida.
+      Retorna:
+            Uma lista sendo primeira subscriber, segunda
+            customer.
+    """
+
     subscriber = 0
     customer = 0
 
@@ -230,6 +271,13 @@ for duration in trip_duration_list:
 mean_trip=accumulator/len(trip_duration_list)
 
 def median(lst):
+
+    """
+      Função que calcula a mediana de uma lista.
+          param1: A lista a ser conferida.
+      Retorna:
+            A mediana da lista.
+    """
     n=len(lst)
     if n<1:
         return None
@@ -237,7 +285,6 @@ def median(lst):
         return sorted(lst)[n//2]
     else:
         return sum(sorted(lst)[n//2-1:n//2+1])/2.0
-    
 
 median_trip = float(median(trip_duration_list))
 
@@ -284,11 +331,32 @@ input("Aperte Enter para continuar...")
 # TODO: Crie uma função para contar tipos de usuários, sem definir os tipos
 # para que nós possamos usar essa função com outra categoria de dados.
 print("Você vai encarar o desafio? (yes ou no)")
-answer = "no"
+answer = "yes"
 
 def count_items(column_list):
+    """
+      Funções que identifica os type da amostra e suas
+      quantidades.
+      Argumentos:
+            param1: A lista a ser conferida.
+      Retorna:
+            Uma lista de toipos  e outra com suas quantidades.
+    """
+
     item_types = []
     count_items = []
+    
+    item_types=set(column_list)
+    for item_type in item_types:
+        accumulator=0
+        for i in column_list:
+            if i == item_type:
+                accumulator+=1
+        
+        count_items.append(accumulator)
+
+
+    
     return item_types, count_items
 
 
