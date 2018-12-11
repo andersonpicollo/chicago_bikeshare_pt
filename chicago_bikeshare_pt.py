@@ -49,8 +49,8 @@ input("Aperte Enter para continuar...")
 # TODO: Imprima o `gênero` das primeiras 20 linhas
 
 print("\nTAREFA 2: Imprimindo o gênero das primeiras 20 amostras")
-for i in range(21):
-    print(data_list[i][6])
+for row in range(21):
+    print(data_list[row][6])
 
 
 # Ótimo! Nós podemos pegar as linhas(samples) iterando com um for, e as colunas(features) por índices.
@@ -72,8 +72,8 @@ def column_to_list(data, index):
 
     column_list = []
     # Dica: Você pode usar um for para iterar sobre as amostras, pegar a feature pelo seu índice, e dar append para uma lista
-    for i in data:
-        column_list.append(i[index])
+    for row in data:
+        column_list.append(row[index])
             
     return column_list
 
@@ -254,7 +254,7 @@ input("Aperte Enter para continuar...")
 # TAREFA 9
 # TODO: Ache a duração de viagem Mínima, Máxima, Média, e Mediana.
 # Você não deve usar funções prontas para isso, como max() e min().
-trip_duration_list = [int (i) for i in column_to_list(data_list, 2)]
+trip_duration_list = [int (row) for row in column_to_list(data_list, 2)]
 min_trip = trip_duration_list[0]
 max_trip = trip_duration_list[0]
 mean_trip = 0.
@@ -278,13 +278,13 @@ def median(lst):
       Retorna:
             A mediana da lista.
     """
-    n=len(lst)
-    if n<1:
+    roll_lenght=len(lst)
+    if roll_lenght<1:
         return None
-    if n % 2 == 1:
-        return sorted(lst)[n//2]
+    if roll_lenght % 2 == 1:
+        return sorted(lst)[roll_lenght//2]
     else:
-        return sum(sorted(lst)[n//2-1:n//2+1])/2.0
+        return sum(sorted(lst)[roll_lenght//2-1:roll_lenght//2+1])/2.0
 
 median_trip = float(median(trip_duration_list))
 
@@ -349,8 +349,8 @@ def count_items(column_list):
     item_types=set(column_list)
     for item_type in item_types:
         accumulator=0
-        for i in column_list:
-            if i == item_type:
+        for line in column_list:
+            if line == item_type:
                 accumulator+=1
         
         count_items.append(accumulator)
