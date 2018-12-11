@@ -63,8 +63,8 @@ def column_to_list(data, index):
     """
       Função que recupera uma coluna de uma lista.
       Argumentos:
-          param1: lista alvo
-          param2: indice da coluna a ser recuperada
+          data: lista alvo
+          index: indice da coluna a ser recuperada
       Retorna:
           Uma lista lista com os valores da coluna.
 
@@ -120,7 +120,7 @@ def count_gender(data_list):
     """
       Função que conta os generos masculino e feminino da uma lista.
       Argumentos:
-          param1: A lista a ser conferida.
+          data_list: A lista a ser conferida.
       Retorna:
             Uma lista sendo a primeira posição 
             a quantidade de generos masculino 
@@ -160,7 +160,7 @@ def most_popular_gender(data_list):
       Funcao que retorna o genero mais famoso entre
       masculino e feminino.
       Argumentos:
-          param1: A lista a ser conferida.
+          data_list: A lista a ser conferida.
       Retorna:
             Uma string identificando o genero.
     """
@@ -208,7 +208,7 @@ def count_user_types (data_list):
       Função que conta quantos subscriber e curtomer existem
       dentro da lista
       Argumentos:
-          param1: A lista a ser conferida.
+          data_list: A lista a ser conferida.
       Retorna:
             Uma lista sendo primeira subscriber, segunda
             customer.
@@ -274,17 +274,17 @@ def median(lst):
 
     """
       Função que calcula a mediana de uma lista.
-          param1: A lista a ser conferida.
+          lst: A lista a ser conferida.
       Retorna:
             A mediana da lista.
     """
-    roll_lenght=len(lst)
-    if roll_lenght<1:
+    lenght=len(lst)
+    if lenght<1:
         return None
-    if roll_lenght % 2 == 1:
-        return sorted(lst)[roll_lenght//2]
+    if lenght % 2 == 1:
+        return sorted(lst)[lenght//2]
     else:
-        return sum(sorted(lst)[roll_lenght//2-1:roll_lenght//2+1])/2.0
+        return sum(sorted(lst)[lenght//2-1:lenght//2+1])/2.0
 
 median_trip = float(median(trip_duration_list))
 
@@ -338,9 +338,9 @@ def count_items(column_list):
       Funções que identifica os type da amostra e suas
       quantidades.
       Argumentos:
-            param1: A lista a ser conferida.
+            column_list: A lista a ser conferida.
       Retorna:
-            Uma lista de toipos  e outra com suas quantidades.
+            Uma lista de tipos  e outra com suas quantidades.
     """
 
     item_types = []
